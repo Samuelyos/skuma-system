@@ -1,0 +1,38 @@
+# Følgende er bare en pladsholderkode, og ikke den vi bruger
+
+@startuml
+
+class Address {
+    Street name: str
+    House nr: str
+    City: str
+    Post nr: int
+    floor: str
+    room nr: str
+    ChangeAddress(): boolean
+}
+
+class Person {
+    Name: str
+    Gender:
+    CPR: int
+}
+
+class Patient{
+    patient nr: int
+    hospital: str
+}
+
+class Doctor{
+    employeeStatus: str
+    hospital: str
+    __
+    assignPatient():
+}
+Person "1..1" --- "0..n" Address
+Patient "1..1" --- "1..n" Doctor
+
+Person <|- Patient
+Person <|- Doctor
+
+@enduml
