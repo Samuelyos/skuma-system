@@ -1,38 +1,54 @@
-# Følgende er bare en pladsholderkode, og ikke den vi bruger
-
 @startuml
 
-class Address {
-    Street name: str
-    House nr: str
-    City: str
-    Post nr: int
-    floor: str
-    room nr: str
-    ChangeAddress(): boolean
+abstract class Person {
+    Fornavn: str
+    Efternavn: str
+}
+abstract class Ansat {
+    Employee ID: int
+}
+class Studerende{
+    Student ID: int
+}
+class Kursusleder{
+    Gæsteforlæser
+    --
+    RedigerKursus:
+}
+interface sKUma
+class Kursus
+class Hold
+class Lokale{
+    Bygning
+    Lokale nr
 }
 
-class Person {
-    Name: str
-    Gender:
-    CPR: int
+class Studie{
+    Navn: str
+    Studieleder: str
+}
+class TA
+class Forelæsning {
+Tidspunkt: date
+--
+SetForelæser(): boolean
+SetLokale():
+SetKursus():
+SetHold():
 }
 
-class Patient{
-    patient nr: int
-    hospital: str
-}
 
-class Doctor{
-    employeeStatus: str
-    hospital: str
-    __
-    assignPatient():
-}
-Person "1..1" --- "0..n" Address
-Patient "1..1" --- "1..n" Doctor
+Kursusleder "1..n" -- "1" Kursus
+Hold "1" *-- "1..n" Studerende: indeholder
+Person <|-- Ansat
+Ansat <|- Kursusleder
+Forelæsning -- Lokale
+Forelæsning -- Kursusleder
+Ansat <|- TA
+Studie "1..n" o-- "1" Kursus
+TA "1..n"-- "1..n"Kursus
 
-Person <|- Patient
-Person <|- Doctor
+Person <|- Studerende
+
 
 @enduml
