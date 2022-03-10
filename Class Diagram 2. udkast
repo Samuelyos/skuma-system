@@ -1,0 +1,76 @@
+@startuml
+
+interface sKUma{
+    DatabaseData:
+    --
+    SendDatabaseRequest():
+}
+
+class Studerende{
+    Student ID: int
+    Navn: str
+    TA: boolean
+    Hold: str
+    --
+    SeSkema():
+    }
+
+class Kursusleder{
+    Employee ID: int
+    TA: boolean
+    Gæsteforlæser
+    Kursusliste:
+    --
+    RedigerKursus:
+}
+
+class Admin{
+    Employee ID: int
+    TA: boolean
+    --
+    EditDataBase
+}
+
+
+class Studie{
+    Navn: str
+    Studieleder: str
+    Længde:
+    Type (Bch el Cnd)
+    }
+
+class Forelæsning {
+    Tidspunkt: date
+    Lokale:
+    Hold:
+    Kursus:
+    --
+    SetForelæser(): boolean
+    SetLokale():
+    SetKursus():
+    SetHold():
+    }
+
+class Database{
+    --
+    BookTid(Dato):Bool
+    SletTid(Dato):Bool
+    SeAltForelæsningsdata():
+    }
+
+
+
+Forelæsning -- Kursusleder
+
+Admin -- Database
+Studie -- Studerende
+sKUma -- Database
+sKUma -- Studerende
+sKUma - Kursusleder
+Database -- Forelæsning
+Studie -- Kursusleder
+
+
+@enduml
+
+
